@@ -1,4 +1,4 @@
-module dynamicgoweather
+module randomdcsweather
 
 go 1.16
 

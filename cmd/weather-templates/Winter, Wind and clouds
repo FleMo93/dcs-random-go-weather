@@ -1,0 +1,57 @@
+["weather"] = 
+    {
+        ["name_ru"] = "Зима. Oблачность и порывистый ветер",
+        ["wind"] = 
+        {
+            ["at8000"] = 
+            {
+                ["speed"] = 10,
+                ["dir"] = 65,
+            }, -- end of ["at8000"]
+            ["atGround"] = 
+            {
+                ["speed"] = 5,
+                ["dir"] = 129,
+            }, -- end of ["atGround"]
+            ["at2000"] = 
+            {
+                ["speed"] = 7,
+                ["dir"] = 209,
+            }, -- end of ["at2000"]
+        }, -- end of ["wind"]
+        ["enable_fog"] = false,
+        ["season"] = 
+        {
+            ["temperature"] = -2,
+        }, -- end of ["season"]
+        ["qnh"] = 760,
+        ["cyclones"] = 
+        {
+        }, -- end of ["cyclones"]
+        ["name_de"] = "Winter, Wolken und Windboen",
+        ["dust_density"] = 0,
+        ["enable_dust"] = false,
+        ["clouds"] = 
+        {
+            ["thickness"] = 330,
+            ["density"] = 8,
+            ["base"] = 300,
+            ["iprecptns"] = 0,
+        }, -- end of ["clouds"]
+        ["atmosphere_type"] = 0,
+        ["groundTurbulence"] = 17,
+        ["name_fr"] = "Hiver, nuages et vent",
+        ["type_weather"] = 0,
+        ["name"] = "Winter. Wind & clouds",
+        ["fog"] = 
+        {
+            ["thickness"] = 0,
+            ["visibility"] = 0,
+        }, -- end of ["fog"]
+        ["visibility"] = 
+        {
+            ["distance"] = 80000,
+        }, -- end of ["visibility"]
+        ["name_es"] = "Invierno. Nubes y viento racheado",
+        ["name_cn"] = "冬季 强风+多云",
+    }, -- end of ["weather"]

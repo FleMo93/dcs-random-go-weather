@@ -1,9 +1,9 @@
 package main
 
 import (
-	"dynamicgoweather"
 	"log"
 	"os"
+	"randomdcsweather"
 	"strings"
 )
 
@@ -20,14 +20,12 @@ func main() {
 	}
 
 	if missionFile == "" {
-		log.Fatal("Missing \"--m\" parameter")
-		os.Exit(1)
+		log.Fatal("Missing \"-m\" parameter")
 	}
 
-	err := dynamicgoweather.SetWeather(missionFile, weather)
+	err := randomdcsweather.SetWeather(missionFile, weather)
 
 	if err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 }

@@ -1,0 +1,57 @@
+["weather"] = 
+    {
+        ["name_ru"] = "Зима. Снежная буря",
+        ["wind"] = 
+        {
+            ["at8000"] = 
+            {
+                ["speed"] = 17,
+                ["dir"] = 232,
+            }, -- end of ["at8000"]
+            ["at2000"] = 
+            {
+                ["speed"] = 20,
+                ["dir"] = 155,
+            }, -- end of ["at2000"]
+            ["atGround"] = 
+            {
+                ["speed"] = 14,
+                ["dir"] = 133,
+            }, -- end of ["atGround"]
+        }, -- end of ["wind"]
+        ["enable_fog"] = true,
+        ["season"] = 
+        {
+            ["temperature"] = -2,
+        }, -- end of ["season"]
+        ["qnh"] = 760,
+        ["cyclones"] = 
+        {
+        }, -- end of ["cyclones"]
+        ["name_de"] = "Winter, Schneesturm",
+        ["dust_density"] = 0,
+        ["enable_dust"] = false,
+        ["clouds"] = 
+        {
+            ["thickness"] = 1490,
+            ["density"] = 10,
+            ["base"] = 700,
+            ["iprecptns"] = 4,
+        }, -- end of ["clouds"]
+        ["atmosphere_type"] = 0,
+        ["groundTurbulence"] = 57,
+        ["name_fr"] = "Hiver, tempete de neige",
+        ["type_weather"] = 0,
+        ["name"] = "Winter. Snow storm",
+        ["fog"] = 
+        {
+            ["thickness"] = 700,
+            ["visibility"] = 80,
+        }, -- end of ["fog"]
+        ["name_cn"] = "冬季 暴风雪",
+        ["visibility"] = 
+        {
+            ["distance"] = 80000,
+        }, -- end of ["visibility"]
+        ["name_es"] = "Invierno. Tormenta de nieve",
+    }, -- end of ["weather"]

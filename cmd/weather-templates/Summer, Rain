@@ -1,0 +1,57 @@
+["weather"] = 
+    {
+        ["name_ru"] = "Лето. Дождь",
+        ["wind"] = 
+        {
+            ["at8000"] = 
+            {
+                ["speed"] = 10,
+                ["dir"] = 278,
+            }, -- end of ["at8000"]
+            ["atGround"] = 
+            {
+                ["speed"] = 5,
+                ["dir"] = 248,
+            }, -- end of ["atGround"]
+            ["at2000"] = 
+            {
+                ["speed"] = 7,
+                ["dir"] = 63,
+            }, -- end of ["at2000"]
+        }, -- end of ["wind"]
+        ["enable_fog"] = true,
+        ["season"] = 
+        {
+            ["temperature"] = 30,
+        }, -- end of ["season"]
+        ["qnh"] = 740,
+        ["cyclones"] = 
+        {
+        }, -- end of ["cyclones"]
+        ["name_de"] = "Sommer, Regen",
+        ["dust_density"] = 0,
+        ["enable_dust"] = false,
+        ["clouds"] = 
+        {
+            ["thickness"] = 300,
+            ["density"] = 8,
+            ["base"] = 1000,
+            ["iprecptns"] = 1,
+        }, -- end of ["clouds"]
+        ["atmosphere_type"] = 0,
+        ["groundTurbulence"] = 4,
+        ["name_fr"] = "Eté, averses",
+        ["type_weather"] = 0,
+        ["name"] = "Summer. Rain",
+        ["fog"] = 
+        {
+            ["thickness"] = 1000,
+            ["visibility"] = 1000,
+        }, -- end of ["fog"]
+        ["name_es"] = "Verano. Lluvia",
+        ["visibility"] = 
+        {
+            ["distance"] = 80000,
+        }, -- end of ["visibility"]
+        ["name_cn"] = "夏季 雨天",
+    }, -- end of ["weather"]

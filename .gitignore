@@ -1,2 +1,6 @@
 cmd/extract
 .vscode
+*.log
+*.miz
+*.miz.zip
+*.exe

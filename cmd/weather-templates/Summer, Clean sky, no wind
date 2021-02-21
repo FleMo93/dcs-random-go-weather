@@ -1,9 +1,6 @@
 ["weather"] = 
     {
-        ["name_ru"] = "aЗима. Штиль",
-        ["atmosphere_type"] = 0,
-        ["groundTurbulence"] = 0,
-        ["enable_fog"] = false,
+        ["name_ru"] = "Лето. Штиль",
         ["wind"] = 
         {
             ["at8000"] = 
@@ -18,36 +15,43 @@
             }, -- end of ["at2000"]
             ["atGround"] = 
             {
-                ["speed"] = 3.6078,
+                ["speed"] = 0,
                 ["dir"] = 0,
             }, -- end of ["atGround"]
         }, -- end of ["wind"]
+        ["enable_fog"] = false,
         ["season"] = 
         {
-            ["temperature"] = 20,
+            ["temperature"] = 29,
         }, -- end of ["season"]
-        ["type_weather"] = 0,
-        ["qnh"] = 760,
+        ["qnh"] = 770,
         ["cyclones"] = 
         {
         }, -- end of ["cyclones"]
-        ["name"] = "Winter, clean skya",
+        ["name_de"] = "Sommer, Klar",
+        ["dust_density"] = 0,
+        ["enable_dust"] = false,
+        ["clouds"] = 
+        {
+            ["thickness"] = 0,
+            ["density"] = 0,
+            ["base"] = 0,
+            ["iprecptns"] = 0,
+        }, -- end of ["clouds"]
+        ["atmosphere_type"] = 0,
+        ["groundTurbulence"] = 0,
+        ["name_fr"] = "Eté, ciel dégagé, vent nul",
+        ["type_weather"] = 0,
+        ["name"] = "Summer. Clean sky, no wind",
         ["fog"] = 
         {
             ["thickness"] = 0,
             ["visibility"] = 0,
         }, -- end of ["fog"]
-        ["enable_dust"] = false,
-        ["dust_density"] = 0,
+        ["name_cn"] = "夏季 晴天+无风",
         ["visibility"] = 
         {
             ["distance"] = 80000,
         }, -- end of ["visibility"]
-        ["clouds"] = 
-        {
-            ["thickness"] = 200,
-            ["density"] = 0,
-            ["base"] = 300,
-            ["iprecptns"] = 0,
-        }, -- end of ["clouds"]
+        ["name_es"] = "Verano. Despejado",
     }, -- end of ["weather"]

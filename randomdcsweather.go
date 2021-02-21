@@ -1,4 +1,4 @@
-package dynamicgoweather
+package randomdcsweather
 
 import (
 	"archive/zip"
@@ -134,12 +134,12 @@ func zipDirectory(source string, target string) error {
 }
 
 func getWeather(name string) (string, error) {
-	dir, err := os.Getwd()
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
 		return "", err
 	}
 
-	templateDir := filepath.Join(dir, "templates")
+	templateDir := filepath.Join(dir, "weather-templates")
 	dirEntries, err := os.ReadDir(templateDir)
 	if err != nil {
 		return "", err
@@ -182,7 +182,7 @@ func setWeather(missionFilePath string, weather string) error {
 	if re.FindString(mission) == "" {
 		return errors.New("Not found")
 	}
-	fmt.Println(mission)
+
 	err = os.WriteFile(missionFilePath, []byte(mission), os.ModeDevice)
 	return err
 }
@@ -195,7 +195,7 @@ func SetWeather(mizFile string, weatherName string) error {
 		return err
 	}
 
-	dir, err := os.Getwd()
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
 		return err
 	}
@@ -224,10 +224,15 @@ func SetWeather(mizFile string, weatherName string) error {
 		return err
 	}
 
-	_, filename := filepath.Split(mizFile)
-	trgt := filepath.Join(dir, filename)
-	zipDirectory(extractDir, trgt)
-	zipDirectory(extractDir, filename+".zip")
+	// _, filename := filepath.Split(mizFile)
+	// trgt := filepath.Join(dir, filename)
+	// zipDirectory(extractDir, filename+".zip")
+
+	err = zipDirectory(extractDir, mizFile)
+	if err != nil {
+		return err
+	}
+
 	err = os.RemoveAll(extractDir)
 	if err != nil {
 		return err
