@@ -5,12 +5,15 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"math/rand"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/mholt/archiver"
 )
 
 func unzip(src string, dest string) ([]string, error) {
@@ -68,69 +71,25 @@ func unzip(src string, dest string) ([]string, error) {
 	return filenames, nil
 }
 
-func zipDirectory(source string, target string) error {
-	zipfile, err := os.Create(target)
+func archiverDirectory(source string, target string) error {
+	filesList := []string{}
+
+	fileInfos, err := ioutil.ReadDir(source)
 	if err != nil {
 		return err
 	}
-	defer zipfile.Close()
 
-	archive := zip.NewWriter(zipfile)
-	defer archive.Close()
+	for _, fi := range fileInfos {
+		filesList = append(filesList, source+"\\"+fi.Name())
+	}
 
-	info, err := os.Stat(source)
+	zip := archiver.NewZip()
+	err = zip.Archive(filesList, target)
 	if err != nil {
-		return nil
-	}
-
-	if !info.IsDir() {
-		return errors.New("Source is no directory")
-	}
-
-	if source[len(source)-1] != '\\' {
-		source += "\\"
-	}
-
-	filepath.Walk(source, func(path string, info os.FileInfo, err error) error {
-		if source == path {
-			return nil
-		}
-		if err != nil {
-			return err
-		}
-
-		header, err := zip.FileInfoHeader(info)
-		if err != nil {
-			return err
-		}
-
-		header.Name = strings.TrimPrefix(path, source)
-
-		if info.IsDir() {
-			header.Name += "/"
-		} else {
-			header.Method = zip.Deflate
-		}
-
-		writer, err := archive.CreateHeader(header)
-		if err != nil {
-			return err
-		}
-
-		if info.IsDir() {
-			return nil
-		}
-
-		file, err := os.Open(path)
-		if err != nil {
-			return err
-		}
-		defer file.Close()
-		_, err = io.Copy(writer, file)
 		return err
-	})
+	}
 
-	return err
+	return nil
 }
 
 func getWeather(name string) (string, error) {
@@ -224,11 +183,10 @@ func SetWeather(mizFile string, weatherName string) error {
 		return err
 	}
 
-	// _, filename := filepath.Split(mizFile)
-	// trgt := filepath.Join(dir, filename)
-	// zipDirectory(extractDir, filename+".zip")
-
-	err = zipDirectory(extractDir, mizFile)
+	zipPath := mizFile + ".tmp.zip"
+	os.Remove(zipPath)
+	err = archiverDirectory(extractDir, zipPath)
+	os.Rename(zipPath, mizFile)
 	if err != nil {
 		return err
 	}
