@@ -1,0 +1,265 @@
+{
+    "times": [
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 1
+                },
+                "end": {
+                    "day": 31,
+                    "month": 1
+                }
+            },
+            "timeOfDay": {
+                "earliest": 30600,
+                "latest": 43200
+            },
+            "weatherTemplates": [
+                "./weather-templates/Winter, Clear sky",
+                "./weather-templates/Winter, Clouds and wind",
+                "./weather-templates/Winter, Heavy snow and clouds",
+                "./weather-templates/Winter, Snow storm",
+                "./weather-templates/Winter, Wind and clouds"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 2
+                },
+                "end": {
+                    "day": 28,
+                    "month": 2
+                }
+            },
+            "timeOfDay": {
+                "earliest": 28800,
+                "latest": 46800
+            },
+            "weatherTemplates": [
+                "./weather-templates/Winter, Clear sky",
+                "./weather-templates/Winter, Clouds and wind",
+                "./weather-templates/Winter, Heavy snow and clouds",
+                "./weather-templates/Winter, Snow storm",
+                "./weather-templates/Winter, Wind and clouds"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 3
+                },
+                "end": {
+                    "day": 31,
+                    "month": 3
+                }
+            },
+            "timeOfDay": {
+                "earliest": 27000,
+                "latest": 48600
+            },
+            "weatherTemplates": [
+                "./weather-templates/Winter, Clear sky",
+                "./weather-templates/Winter, Clouds and wind",
+                "./weather-templates/Winter, Heavy snow and clouds",
+                "./weather-templates/Winter, Snow storm",
+                "./weather-templates/Winter, Wind and clouds"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 4
+                },
+                "end": {
+                    "day": 30,
+                    "month": 4
+                }
+            },
+            "timeOfDay": {
+                "earliest": 24300,
+                "latest": 50400
+            },
+            "weatherTemplates": [
+                "./weather-templates/Spring, Clear sky",
+                "./weather-templates/Spring, Thunderstorm"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 5
+                },
+                "end": {
+                    "day": 31,
+                    "month": 5
+                }
+            },
+            "timeOfDay": {
+                "earliest": 21600,
+                "latest": 52200
+            },
+            "weatherTemplates": [
+                "./weather-templates/Spring, Clear sky",
+                "./weather-templates/Spring, Thunderstorm"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 6
+                },
+                "end": {
+                    "day": 30,
+                    "month": 6
+                }
+            },
+            "timeOfDay": {
+                "earliest": 19800,
+                "latest": 54000
+            },
+            "weatherTemplates": [
+                "./weather-templates/Spring, Clear sky",
+                "./weather-templates/Spring, Thunderstorm"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 7
+                },
+                "end": {
+                    "day": 31,
+                    "month": 7
+                }
+            },
+            "timeOfDay": {
+                "earliest": 20700,
+                "latest": 52200
+            },
+            "weatherTemplates": [
+                "./weather-templates/Summer, Clean sky, no wind",
+                "./weather-templates/Summer, Clouds and wind",
+                "./weather-templates/Summer, Heat",
+                "./weather-templates/Summer, Heavy thunderstorm",
+                "./weather-templates/Summer, Rain"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 8
+                },
+                "end": {
+                    "day": 31,
+                    "month": 8
+                }
+            },
+            "timeOfDay": {
+                "earliest": 22500,
+                "latest": 51300
+            },
+            "weatherTemplates": [
+                "./weather-templates/Summer, Clean sky, no wind",
+                "./weather-templates/Summer, Clouds and wind",
+                "./weather-templates/Summer, Heat",
+                "./weather-templates/Summer, Heavy thunderstorm",
+                "./weather-templates/Summer, Rain"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 9
+                },
+                "end": {
+                    "day": 30,
+                    "month": 9
+                }
+            },
+            "timeOfDay": {
+                "earliest": 25200,
+                "latest": 46800
+            },
+            "weatherTemplates": [
+                "./weather-templates/Summer, Clean sky, no wind",
+                "./weather-templates/Summer, Clouds and wind",
+                "./weather-templates/Summer, Heat",
+                "./weather-templates/Summer, Heavy thunderstorm",
+                "./weather-templates/Summer, Rain"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 10
+                },
+                "end": {
+                    "day": 30,
+                    "month": 10
+                }
+            },
+            "timeOfDay": {
+                "earliest": 28800,
+                "latest": 43200
+            },
+            "weatherTemplates": [
+                "./weather-templates/Autumn, Clear sky",
+                "./weather-templates/Autumn, Heavy rain",
+                "./weather-templates/Autumn, Rainy day"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 11
+                },
+                "end": {
+                    "day": 30,
+                    "month": 11
+                }
+            },
+            "timeOfDay": {
+                "earliest": 28800,
+                "latest": 41400
+            },
+            "weatherTemplates": [
+                "./weather-templates/Autumn, Clear sky",
+                "./weather-templates/Autumn, Heavy rain",
+                "./weather-templates/Autumn, Rainy day"
+            ]
+        },
+        {
+            "date": {
+                "start": {
+                    "day": 1,
+                    "month": 12
+                },
+                "end": {
+                    "day": 31,
+                    "month": 12
+                }
+            },
+            "timeOfDay": {
+                "earliest": 30600,
+                "latest": 41400
+            },
+            "weatherTemplates": [
+                "./weather-templates/Autumn, Clear sky",
+                "./weather-templates/Autumn, Heavy rain",
+                "./weather-templates/Autumn, Rainy day"
+            ]
+        }
+    ]
+}

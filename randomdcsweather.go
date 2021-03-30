@@ -6,15 +6,21 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"math/rand"
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
-	"time"
 
 	"github.com/mholt/archiver"
 )
+
+type WeatherSettings struct {
+	Day             int
+	Month           int
+	TimeOfDay       int
+	WeatherTemplate string
+}
 
 func unzip(src string, dest string) ([]string, error) {
 	var filenames []string
@@ -92,44 +98,7 @@ func archiverDirectory(source string, target string) error {
 	return nil
 }
 
-func getWeather(name string) (string, error) {
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
-	if err != nil {
-		return "", err
-	}
-
-	templateDir := filepath.Join(dir, "weather-templates")
-	dirEntries, err := os.ReadDir(templateDir)
-	if err != nil {
-		return "", err
-	}
-
-	weatherFile := ""
-
-	if name != "" {
-		weatherFile = filepath.Join(templateDir, name)
-	} else {
-		rand.Seed(time.Now().UnixNano())
-		index := rand.Intn(len(dirEntries))
-		file := dirEntries[index]
-		weatherFile = filepath.Join(templateDir, file.Name())
-	}
-
-	_, err = os.Stat(weatherFile)
-	if err != nil || weatherFile == "" {
-		return "", errors.New("Template weather file not found")
-	}
-
-	fileByte, err := os.ReadFile(weatherFile)
-
-	if err != nil {
-		return "", err
-	}
-
-	return string(fileByte), nil
-}
-
-func setWeather(missionFilePath string, weather string) error {
+func setWeather(missionFilePath string, weatherTemplate string) error {
 	fileByte, err := os.ReadFile(missionFilePath)
 	if err != nil {
 		return err
@@ -137,7 +106,7 @@ func setWeather(missionFilePath string, weather string) error {
 
 	mission := string(fileByte)
 	re := regexp.MustCompile(`(?s)\["weather"\].*(?:end of \["weather"\])`)
-	mission = re.ReplaceAllString(mission, weather)
+	mission = re.ReplaceAllString(mission, weatherTemplate)
 	if re.FindString(mission) == "" {
 		return errors.New("Not found")
 	}
@@ -146,14 +115,54 @@ func setWeather(missionFilePath string, weather string) error {
 	return err
 }
 
-// SetWeather sets the weather of a DCS mission file
-func SetWeather(mizFile string, weatherName string) error {
-	weatherTemplate, err := getWeather(weatherName)
+// func setTime(missionFilePath string, time int) error {
+// 	fileByte, err := os.ReadFile(missionFilePath)
+// 	if err != nil {
+// 		return err
+// 	}
 
+// 	mission := string(fileByte)
+
+// 	timeRegex := regexp.MustCompile(`^(?m)    \["start_time"\] = \d+,`)
+// 	timeMatches := timeRegex.FindStringSubmatchIndex(mission)
+// 	if len(timeMatches) != 4 {
+// 		return errors.New("Could not find time")
+// 	}
+
+// 	mission = mission[:timeMatches[2]] + strconv.Itoa(time) + mission[timeMatches[3]:]
+// 	err = os.WriteFile(missionFilePath, []byte(mission), os.ModeDevice)
+// 	return err
+// }
+
+func setDate(missionFilePath string, month int, day int) error {
+	fileByte, err := os.ReadFile(missionFilePath)
 	if err != nil {
 		return err
 	}
 
+	mission := string(fileByte)
+
+	dayRegex := regexp.MustCompile(`(?s)\["date"\].*\["Day"\] = (\d+).*(?:end of \["date"\])`)
+	dayMatches := dayRegex.FindStringSubmatchIndex(mission)
+	if len(dayMatches) != 4 {
+		return errors.New("Could not find day")
+	}
+
+	mission = mission[:dayMatches[2]] + strconv.Itoa(day) + mission[dayMatches[3]:]
+
+	monthRegex := regexp.MustCompile(`(?s)\["date"\].*\["Month"\] = (\d+).*(?:end of \["date"\])`)
+	monthMatches := monthRegex.FindStringSubmatchIndex(mission)
+	if len(monthMatches) != 4 {
+		return errors.New("Could not find month")
+	}
+	mission = mission[:monthMatches[2]] + strconv.Itoa(month) + mission[monthMatches[3]:]
+
+	err = os.WriteFile(missionFilePath, []byte(mission), os.ModeDevice)
+	return err
+}
+
+// SetWeather sets the weather of a DCS mission file
+func SetWeather(mizFile string, weather WeatherSettings) error {
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err != nil {
 		return err
@@ -177,11 +186,17 @@ func SetWeather(mizFile string, weatherName string) error {
 		return errors.New("Mission file in .miz not found")
 	}
 
-	err = setWeather(missionFile, weatherTemplate)
-
-	if err != nil {
+	if err = setWeather(missionFile, weather.WeatherTemplate); err != nil {
 		return err
 	}
+
+	if err = setDate(missionFile, weather.Month, weather.Day); err != nil {
+		return err
+	}
+
+	// if err = setTime(missionFile, weather.TimeOfDay); err != nil {
+	// 	return err
+	// }
 
 	zipPath := mizFile + ".tmp.zip"
 	os.Remove(zipPath)
