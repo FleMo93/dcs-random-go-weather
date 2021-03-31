@@ -115,24 +115,24 @@ func setWeather(missionFilePath string, weatherTemplate string) error {
 	return err
 }
 
-// func setTime(missionFilePath string, time int) error {
-// 	fileByte, err := os.ReadFile(missionFilePath)
-// 	if err != nil {
-// 		return err
-// 	}
+func setTime(missionFilePath string, time int) error {
+	fileByte, err := os.ReadFile(missionFilePath)
+	if err != nil {
+		return err
+	}
 
-// 	mission := string(fileByte)
+	mission := string(fileByte)
 
-// 	timeRegex := regexp.MustCompile(`^(?m)    \["start_time"\] = \d+,`)
-// 	timeMatches := timeRegex.FindStringSubmatchIndex(mission)
-// 	if len(timeMatches) != 4 {
-// 		return errors.New("Could not find time")
-// 	}
+	timeRegex := regexp.MustCompile(`(?m)^    \["start_time"\] = (\d+),`)
+	timeMatches := timeRegex.FindStringSubmatchIndex(mission)
+	if len(timeMatches) != 4 {
+		return errors.New("Could not find time")
+	}
 
-// 	mission = mission[:timeMatches[2]] + strconv.Itoa(time) + mission[timeMatches[3]:]
-// 	err = os.WriteFile(missionFilePath, []byte(mission), os.ModeDevice)
-// 	return err
-// }
+	mission = mission[:timeMatches[2]] + strconv.Itoa(time) + mission[timeMatches[3]:]
+	err = os.WriteFile(missionFilePath, []byte(mission), os.ModeDevice)
+	return err
+}
 
 func setDate(missionFilePath string, month int, day int) error {
 	fileByte, err := os.ReadFile(missionFilePath)
@@ -194,9 +194,9 @@ func SetWeather(mizFile string, weather WeatherSettings) error {
 		return err
 	}
 
-	// if err = setTime(missionFile, weather.TimeOfDay); err != nil {
-	// 	return err
-	// }
+	if err = setTime(missionFile, weather.TimeOfDay); err != nil {
+		return err
+	}
 
 	zipPath := mizFile + ".tmp.zip"
 	os.Remove(zipPath)
