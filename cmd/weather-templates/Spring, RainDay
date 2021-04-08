@@ -1,55 +1,52 @@
 ["weather"] = 
     {
-        ["name_ru"] = "Зима. Oблачность",
+        ["atmosphere_type"] = 0,
+        ["groundTurbulence"] = 0,
+        ["enable_fog"] = false,
         ["wind"] = 
         {
             ["at8000"] = 
             {
-                ["speed"] = 7,
-                ["dir"] = 206,
+                ["speed"] = 6,
+                ["dir"] = 243,
             }, -- end of ["at8000"]
             ["at2000"] = 
             {
                 ["speed"] = 5,
-                ["dir"] = 130,
+                ["dir"] = 310,
             }, -- end of ["at2000"]
             ["atGround"] = 
             {
-                ["speed"] = 3,
+                ["speed"] = 2,
                 ["dir"] = 257,
             }, -- end of ["atGround"]
         }, -- end of ["wind"]
-        ["enable_fog"] = false,
         ["season"] = 
         {
-            ["temperature"] = -7,
+            ["temperature"] = 4,
         }, -- end of ["season"]
-        ["qnh"] = 750,
+        ["type_weather"] = 0,
+        ["qnh"] = 760,
         ["cyclones"] = 
         {
         }, -- end of ["cyclones"]
-        ["name_de"] = "Winter, Wolken und Wind",
-        ["dust_density"] = 0,
-        ["enable_dust"] = false,
-        ["clouds"] = 
-        {
-            ["thickness"] = 800,
-            ["density"] = 6,
-            ["base"] = 4100,
-            ["iprecptns"] = 0,
-        }, -- end of ["clouds"]
-        ["atmosphere_type"] = 0,
-        ["groundTurbulence"] = 7,
-        ["name_fr"] = "Hiver, nuages et vent",
-        ["type_weather"] = 0,
-        ["name"] = "Winter. Clouds & wind",
+        ["name"] = "Spring, RainDay",
         ["fog"] = 
         {
             ["thickness"] = 0,
             ["visibility"] = 0,
         }, -- end of ["fog"]
+        ["enable_dust"] = false,
+        ["dust_density"] = 0,
         ["visibility"] = 
         {
             ["distance"] = 80000,
         }, -- end of ["visibility"]
+        ["clouds"] = 
+        {
+            ["thickness"] = 200,
+            ["density"] = 9,
+            ["base"] = 5000,
+            ["iprecptns"] = 1,
+        }, -- end of ["clouds"]
     }, -- end of ["weather"]

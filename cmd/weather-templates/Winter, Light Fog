@@ -1,0 +1,52 @@
+["weather"] = 
+    {
+        ["atmosphere_type"] = 0,
+        ["groundTurbulence"] = 0,
+        ["enable_fog"] = true,
+        ["wind"] = 
+        {
+            ["at8000"] = 
+            {
+                ["speed"] = 5.6694,
+                ["dir"] = 243,
+            }, -- end of ["at8000"]
+            ["at2000"] = 
+            {
+                ["speed"] = 5.154,
+                ["dir"] = 310,
+            }, -- end of ["at2000"]
+            ["atGround"] = 
+            {
+                ["speed"] = 1.5462,
+                ["dir"] = 332,
+            }, -- end of ["atGround"]
+        }, -- end of ["wind"]
+        ["season"] = 
+        {
+            ["temperature"] = -11,
+        }, -- end of ["season"]
+        ["type_weather"] = 0,
+        ["qnh"] = 760,
+        ["cyclones"] = 
+        {
+        }, -- end of ["cyclones"]
+        ["name"] = "Winter, Light Fog",
+        ["fog"] = 
+        {
+            ["thickness"] = 76.2,
+            ["visibility"] = 340,
+        }, -- end of ["fog"]
+        ["enable_dust"] = true,
+        ["dust_density"] = 900,
+        ["visibility"] = 
+        {
+            ["distance"] = 80000,
+        }, -- end of ["visibility"]
+        ["clouds"] = 
+        {
+            ["thickness"] = 1000,
+            ["density"] = 8,
+            ["base"] = 5000,
+            ["iprecptns"] = 0,
+        }, -- end of ["clouds"]
+    }, -- end of ["weather"]
