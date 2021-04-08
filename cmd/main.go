@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"os"
+	"path/filepath"
 	"randomdcsweather"
 	"strings"
 	"time"
@@ -40,7 +41,8 @@ func main() {
 		}
 	}
 
-	settingsByte, err := os.ReadFile("./settings.json")
+	exePath := filepath.Dir(arg[0])
+	settingsByte, err := os.ReadFile(filepath.Join(exePath, "./settings.json"))
 
 	if err != nil {
 		log.Fatal(err)
@@ -63,7 +65,7 @@ func main() {
 	missionTime := time.Unix(deltaDate, 0)
 
 	weatherTemplateIndex := random.Intn(len(weather.WeatherTemplates))
-	templateByte, err := ioutil.ReadFile(weather.WeatherTemplates[weatherTemplateIndex])
+	templateByte, err := ioutil.ReadFile(filepath.Join(exePath, weather.WeatherTemplates[weatherTemplateIndex]))
 	if err != nil {
 		log.Fatal(err)
 	}
