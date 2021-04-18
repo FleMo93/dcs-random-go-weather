@@ -4,7 +4,7 @@
     "density": 610,
     "iprecptns": 0,
     "base": {
-        "min": 0,
+        "min": 2100,
         "max": 3700
     }
 }

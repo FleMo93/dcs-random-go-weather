@@ -2,6 +2,7 @@ package randomdcsweather
 
 import (
 	"log"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -21,6 +22,14 @@ func depthToString(depth int) string {
 	return strings.Repeat("    ", depth)
 }
 
+func escapeLuaString(str string) string {
+	str = strings.ReplaceAll(str, "\\", "\\\\")
+	newLineRegex := regexp.MustCompile("\\n")
+	str = newLineRegex.ReplaceAllString(str, "\\\n")
+	str = strings.ReplaceAll(str, "\"", "\\\"")
+	return str
+}
+
 func tableToString(table *lua.LTable, depth int) string {
 	res := ""
 	table.ForEach(func(a lua.LValue, b lua.LValue) {
@@ -33,7 +42,7 @@ func tableToString(table *lua.LTable, depth int) string {
 				depthToString(depth) + "}, -- end of " + luaKeyString(a) + "\n"
 			break
 		case lua.LTString:
-			res += depthToString(depth) + luaKeyString(a) + " = \"" + b.String() + "\",\n"
+			res += depthToString(depth) + luaKeyString(a) + " = \"" + escapeLuaString(b.String()) + "\",\n"
 			break
 		case lua.LTNumber:
 			res += depthToString(depth) + luaKeyString(a) + " = " + b.String() + ",\n"
