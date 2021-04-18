@@ -33,6 +33,13 @@ type WeatherSettings struct {
 }
 
 func main() {
+	logFile := filepath.Base(os.Args[0]) + ".log"
+	file, err := os.OpenFile(logFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.SetOutput(file)
+
 	arg := os.Args
 	var missionFile = ""
 	for _, ele := range arg {
