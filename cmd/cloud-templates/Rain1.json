@@ -1,0 +1,10 @@
+{
+    "preset": "RainyPreset1",
+    "thickness": 8,
+    "density": 610,
+    "iprecptns": 0,
+    "base": {
+        "min": 450,
+        "max": 2900
+    }
+}

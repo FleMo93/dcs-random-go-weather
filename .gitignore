@@ -4,3 +4,4 @@ cmd/extract
 *.miz
 *.miz.zip
 *.exe
+*.rar

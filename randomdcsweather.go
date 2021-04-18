@@ -9,10 +9,10 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"github.com/mholt/archiver"
+	lua "github.com/yuin/gopher-lua"
 )
 
 type WeatherSettings struct {
@@ -20,6 +20,23 @@ type WeatherSettings struct {
 	Month           int
 	TimeOfDay       int
 	WeatherTemplate string
+	CloudTemplate   CloudTemplate
+}
+
+type CloudTemplate struct {
+	Preset    *string `json:"preset"`
+	Thickness int     `json:"thickness"`
+	Density   int     `json:"density"`
+	IPRecptns int     `json:"iprecptns"`
+	Base      int     `json:"base"`
+}
+
+type mission struct {
+	date struct {
+		year  int
+		day   int
+		month int
+	}
 }
 
 func unzip(src string, dest string) ([]string, error) {
@@ -115,50 +132,57 @@ func setWeather(missionFilePath string, weatherTemplate string) error {
 	return err
 }
 
-func setTime(missionFilePath string, time int) error {
-	fileByte, err := os.ReadFile(missionFilePath)
-	if err != nil {
-		return err
+func setTime(lMission *lua.LTable, time int) error {
+	if lMission.RawGetString("start_time") == nil {
+		return errors.New("Mission table has no \"start_time\" key")
 	}
-
-	mission := string(fileByte)
-
-	timeRegex := regexp.MustCompile(`(?m)^    \["start_time"\] = (\d+),`)
-	timeMatches := timeRegex.FindStringSubmatchIndex(mission)
-	if len(timeMatches) != 4 {
-		return errors.New("Could not find time")
-	}
-
-	mission = mission[:timeMatches[2]] + strconv.Itoa(time) + mission[timeMatches[3]:]
-	err = os.WriteFile(missionFilePath, []byte(mission), os.ModeDevice)
-	return err
+	lMission.RawSetString("start_time", lua.LNumber(time))
+	return nil
 }
 
-func setDate(missionFilePath string, month int, day int) error {
-	fileByte, err := os.ReadFile(missionFilePath)
-	if err != nil {
-		return err
+func setDate(lMission *lua.LTable, month int, day int) error {
+	dateTable := lMission.RawGetString("date").(*lua.LTable)
+	if dateTable == nil {
+		return errors.New("Date table not found")
 	}
 
-	mission := string(fileByte)
-
-	dayRegex := regexp.MustCompile(`(?s)\["date"\].*\["Day"\] = (\d+).*(?:end of \["date"\])`)
-	dayMatches := dayRegex.FindStringSubmatchIndex(mission)
-	if len(dayMatches) != 4 {
-		return errors.New("Could not find day")
+	if dateTable.RawGetString("Month") == nil {
+		return errors.New("Date table has no \"Month\" key")
 	}
 
-	mission = mission[:dayMatches[2]] + strconv.Itoa(day) + mission[dayMatches[3]:]
-
-	monthRegex := regexp.MustCompile(`(?s)\["date"\].*\["Month"\] = (\d+).*(?:end of \["date"\])`)
-	monthMatches := monthRegex.FindStringSubmatchIndex(mission)
-	if len(monthMatches) != 4 {
-		return errors.New("Could not find month")
+	if dateTable.RawGetString("Day") == nil {
+		return errors.New("Date table has no \"Day\" key")
 	}
-	mission = mission[:monthMatches[2]] + strconv.Itoa(month) + mission[monthMatches[3]:]
 
-	err = os.WriteFile(missionFilePath, []byte(mission), os.ModeDevice)
-	return err
+	dateTable.RawSetString("Month", lua.LNumber(month))
+	dateTable.RawSetString("Day", lua.LNumber(day))
+
+	return nil
+}
+
+func setClouds(lMission *lua.LTable, cloudTemplate CloudTemplate) error {
+	weatherTable := lMission.RawGetString("weather").(*lua.LTable)
+	if weatherTable == nil {
+		return errors.New("Weather table not found")
+	}
+
+	cloudsTable := weatherTable.RawGetString("clouds").(*lua.LTable)
+	if cloudsTable == nil {
+		return errors.New("Clouds table not found")
+	}
+
+	if cloudTemplate.Preset != nil {
+		cloudsTable.RawSetString("preset", lua.LString(*cloudTemplate.Preset))
+	} else {
+		cloudsTable.RawSetString("preset", lua.LNil)
+	}
+
+	cloudsTable.RawSetString("thickness", lua.LNumber(cloudTemplate.Thickness))
+	cloudsTable.RawSetString("density", lua.LNumber(cloudTemplate.Density))
+	cloudsTable.RawSetString("iprecptns", lua.LNumber(cloudTemplate.IPRecptns))
+	cloudsTable.RawSetString("base", lua.LNumber(cloudTemplate.Base))
+
+	return nil
 }
 
 // SetWeather sets the weather of a DCS mission file
@@ -190,11 +214,36 @@ func SetWeather(mizFile string, weather WeatherSettings) error {
 		return err
 	}
 
-	if err = setDate(missionFile, weather.Month, weather.Day); err != nil {
+	missionBytes, err := ioutil.ReadFile(missionFile)
+	if err != nil {
 		return err
 	}
 
-	if err = setTime(missionFile, weather.TimeOfDay); err != nil {
+	missionString := string(missionBytes)
+	l := lua.NewState()
+	defer l.Close()
+	err = l.DoString(missionString)
+	if err != nil {
+		return err
+	}
+
+	lMission := l.GetGlobal("mission").(*lua.LTable)
+
+	if err = setDate(lMission, weather.Month, weather.Day); err != nil {
+		return err
+	}
+
+	if err = setTime(lMission, weather.TimeOfDay); err != nil {
+		return err
+	}
+
+	if err = setClouds(lMission, weather.CloudTemplate); err != nil {
+		return err
+	}
+
+	str := luaTableToString("mission", lMission)
+	err = ioutil.WriteFile(missionFile, []byte(str+"\n"), 0644)
+	if err != nil {
 		return err
 	}
 

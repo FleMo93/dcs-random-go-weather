@@ -1,4 +1,38 @@
 {
+
+	"cloudTemplates": [
+    "./cloud-templates/Clouds1.json",
+	"./cloud-templates/Clouds2.json",
+	"./cloud-templates/Clouds3.json",
+	"./cloud-templates/Clouds4.json",
+	"./cloud-templates/Clouds5.json",
+	"./cloud-templates/Clouds6.json",
+	"./cloud-templates/Clouds7.json",
+	"./cloud-templates/highlossenedupclouds1.json",
+	"./cloud-templates/highlossenedupclouds2.json",
+	"./cloud-templates/highlossenedupclouds3.json",
+	"./cloud-templates/lightclouds1.json",
+	"./cloud-templates/lightclouds2.json",
+	"./cloud-templates/Rain1.json",
+	"./cloud-templates/Rain2.json",
+	"./cloud-templates/Rain3.json",
+	"./cloud-templates/rippedclouds1.json",
+	"./cloud-templates/rippedclouds2.json",
+	"./cloud-templates/rippedclouds3.json",
+	"./cloud-templates/rippedclouds4.json",
+	"./cloud-templates/rippedclouds5.json",
+	"./cloud-templates/rippedclouds6.json",
+	"./cloud-templates/rippedclouds7.json",
+	"./cloud-templates/rippedclouds8.json",
+	"./cloud-templates/spread1.json",
+	"./cloud-templates/spread2.json",
+	"./cloud-templates/spread3.json",
+	"./cloud-templates/spread4.json",
+	"./cloud-templates/spread5.json",
+	"./cloud-templates/spread6.json",
+	"./cloud-templates/spread7.json"
+	],
+	
     "times": [
         {
             "date": {
@@ -21,7 +55,7 @@
                 "./weather-templates/Winter, Heavy snow and clouds",
                 "./weather-templates/Winter, Snow storm",
                 "./weather-templates/Winter, Wind and clouds",
-				"./weather-templates/Winter, LightFog",
+				"./weather-templates/Winter, Light Fog",
 				"./weather-templates/Winter, Light Snow"
             ]
         },
@@ -46,7 +80,7 @@
                 "./weather-templates/Winter, Heavy snow and clouds",
                 "./weather-templates/Winter, Snow storm",
                 "./weather-templates/Winter, Wind and clouds",
-				"./weather-templates/Winter, LightFog",
+				"./weather-templates/Winter, Light Fog",
 				"./weather-templates/Winter, Light Snow"
             ]
         },
@@ -71,7 +105,7 @@
                 "./weather-templates/Winter, Heavy snow and clouds",
                 "./weather-templates/Winter, Snow storm",
                 "./weather-templates/Winter, Wind and clouds",
-				"./weather-templates/Winter, LightFog",
+				"./weather-templates/Winter, Light Fog",
 				"./weather-templates/Winter, Light Snow"
             ]
         },

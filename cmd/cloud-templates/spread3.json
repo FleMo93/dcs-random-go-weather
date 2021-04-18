@@ -1,0 +1,10 @@
+{
+    "preset": "Preset7",
+    "thickness": 8,
+    "density": 610,
+    "iprecptns": 0,
+    "base": {
+        "min": 1700,
+        "max": 5000
+    }
+}
