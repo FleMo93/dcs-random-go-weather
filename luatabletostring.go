@@ -24,9 +24,12 @@ func depthToString(depth int) string {
 
 func escapeLuaString(str string) string {
 	str = strings.ReplaceAll(str, "\\", "\\\\")
+
 	newLineRegex := regexp.MustCompile("\\n")
 	str = newLineRegex.ReplaceAllString(str, "\\\n")
-	str = strings.ReplaceAll(str, "\"", "\\\"")
+
+	quotesRegex := regexp.MustCompile(`"`)
+	str = quotesRegex.ReplaceAllString(str, "\\\"")
 	return str
 }
 
@@ -60,5 +63,5 @@ func tableToString(table *lua.LTable, depth int) string {
 func luaTableToString(tableVarName string, table *lua.LTable) string {
 	res := tableVarName + " = \n{\n"
 	res += tableToString(table, 1)
-	return res + "}"
+	return res + "} -- end of " + tableVarName + "\n"
 }

@@ -1,6 +1,5 @@
 {
-
-	"cloudTemplates": [
+    "cloudTemplates": [
         "./cloud-templates/Clouds1.json",
         "./cloud-templates/Clouds2.json",
         "./cloud-templates/Clouds3.json",
@@ -31,8 +30,7 @@
         "./cloud-templates/spread5.json",
         "./cloud-templates/spread6.json",
         "./cloud-templates/spread7.json"
-	],
-	
+    ],
     "times": [
         {
             "date": {
@@ -55,8 +53,8 @@
                 "./weather-templates/Winter, Heavy snow and clouds",
                 "./weather-templates/Winter, Snow storm",
                 "./weather-templates/Winter, Wind and clouds",
-				"./weather-templates/Winter, Light Fog",
-				"./weather-templates/Winter, Light Snow"
+                "./weather-templates/Winter, Light Fog",
+                "./weather-templates/Winter, Light Snow"
             ]
         },
         {
@@ -80,8 +78,8 @@
                 "./weather-templates/Winter, Heavy snow and clouds",
                 "./weather-templates/Winter, Snow storm",
                 "./weather-templates/Winter, Wind and clouds",
-				"./weather-templates/Winter, Light Fog",
-				"./weather-templates/Winter, Light Snow"
+                "./weather-templates/Winter, Light Fog",
+                "./weather-templates/Winter, Light Snow"
             ]
         },
         {
@@ -105,8 +103,8 @@
                 "./weather-templates/Winter, Heavy snow and clouds",
                 "./weather-templates/Winter, Snow storm",
                 "./weather-templates/Winter, Wind and clouds",
-				"./weather-templates/Winter, Light Fog",
-				"./weather-templates/Winter, Light Snow"
+                "./weather-templates/Winter, Light Fog",
+                "./weather-templates/Winter, Light Snow"
             ]
         },
         {
@@ -127,9 +125,9 @@
             "weatherTemplates": [
                 "./weather-templates/Spring, Clear sky",
                 "./weather-templates/Spring, Thunderstorm",
-				"./weather-templates/Spring, MidCloudsNR",
-				"./weather-templates/Spring, HighCloudsNR",
-				"./weather-templates/Spring, RainDay"
+                "./weather-templates/Spring, MidCloudsNR",
+                "./weather-templates/Spring, HighCloudsNR",
+                "./weather-templates/Spring, RainDay"
             ]
         },
         {
@@ -150,9 +148,9 @@
             "weatherTemplates": [
                 "./weather-templates/Spring, Clear sky",
                 "./weather-templates/Spring, Thunderstorm",
-				"./weather-templates/Spring, MidCloudsNR",
-				"./weather-templates/Spring, HighCloudsNR",
-				"./weather-templates/Spring, RainDay"
+                "./weather-templates/Spring, MidCloudsNR",
+                "./weather-templates/Spring, HighCloudsNR",
+                "./weather-templates/Spring, RainDay"
             ]
         },
         {
@@ -173,9 +171,9 @@
             "weatherTemplates": [
                 "./weather-templates/Spring, Clear sky",
                 "./weather-templates/Spring, Thunderstorm",
-				"./weather-templates/Spring, MidCloudsNR",
-				"./weather-templates/Spring, HighCloudsNR",
-				"./weather-templates/Spring, RainDay"
+                "./weather-templates/Spring, MidCloudsNR",
+                "./weather-templates/Spring, HighCloudsNR",
+                "./weather-templates/Spring, RainDay"
             ]
         },
         {
@@ -199,10 +197,10 @@
                 "./weather-templates/Summer, Heat",
                 "./weather-templates/Summer, Heavy thunderstorm",
                 "./weather-templates/Summer, Rain",
-				"./weather-templates/Summer, HighCloudsNR",
-				"./weather-templates/Summer, MidCloudsNR",
-				"./weather-templates/Summer, NiceDay",
-				"./weather-templates/Summer, RainDay"
+                "./weather-templates/Summer, HighCloudsNR",
+                "./weather-templates/Summer, MidCloudsNR",
+                "./weather-templates/Summer, NiceDay",
+                "./weather-templates/Summer, RainDay"
             ]
         },
         {
@@ -226,10 +224,10 @@
                 "./weather-templates/Summer, Heat",
                 "./weather-templates/Summer, Heavy thunderstorm",
                 "./weather-templates/Summer, Rain",
-				"./weather-templates/Summer, HighCloudsNR",
-				"./weather-templates/Summer, MidCloudsNR",
-				"./weather-templates/Summer, NiceDay",
-				"./weather-templates/Summer, RainDay"
+                "./weather-templates/Summer, HighCloudsNR",
+                "./weather-templates/Summer, MidCloudsNR",
+                "./weather-templates/Summer, NiceDay",
+                "./weather-templates/Summer, RainDay"
             ]
         },
         {
@@ -253,10 +251,10 @@
                 "./weather-templates/Summer, Heat",
                 "./weather-templates/Summer, Heavy thunderstorm",
                 "./weather-templates/Summer, Rain",
-				"./weather-templates/Summer, HighCloudsNR",
-				"./weather-templates/Summer, MidCloudsNR",
-				"./weather-templates/Summer, NiceDay",
-				"./weather-templates/Summer, RainDay"
+                "./weather-templates/Summer, HighCloudsNR",
+                "./weather-templates/Summer, MidCloudsNR",
+                "./weather-templates/Summer, NiceDay",
+                "./weather-templates/Summer, RainDay"
             ]
         },
         {
@@ -278,9 +276,9 @@
                 "./weather-templates/Autumn, Clear sky",
                 "./weather-templates/Autumn, Heavy rain",
                 "./weather-templates/Autumn, Rainy day",
-				"./weather-templates/Autumn, HighCloudsNR",
-				"./weather-templates/Autumn, MidCloudsNR",
-				"./weather-templates/Autumn, LightRain"
+                "./weather-templates/Autumn, HighCloudsNR",
+                "./weather-templates/Autumn, MidCloudsNR",
+                "./weather-templates/Autumn, LightRain"
             ]
         },
         {
@@ -302,9 +300,9 @@
                 "./weather-templates/Autumn, Clear sky",
                 "./weather-templates/Autumn, Heavy rain",
                 "./weather-templates/Autumn, Rainy day",
-				"./weather-templates/Autumn, HighCloudsNR",
-				"./weather-templates/Autumn, MidCloudsNR",
-				"./weather-templates/Autumn, LightRain"
+                "./weather-templates/Autumn, HighCloudsNR",
+                "./weather-templates/Autumn, MidCloudsNR",
+                "./weather-templates/Autumn, LightRain"
             ]
         },
         {
@@ -326,9 +324,9 @@
                 "./weather-templates/Autumn, Clear sky",
                 "./weather-templates/Autumn, Heavy rain",
                 "./weather-templates/Autumn, Rainy day",
-				"./weather-templates/Autumn, HighCloudsNR",
-				"./weather-templates/Autumn, MidCloudsNR",
-				"./weather-templates/Autumn, LightRain"
+                "./weather-templates/Autumn, HighCloudsNR",
+                "./weather-templates/Autumn, MidCloudsNR",
+                "./weather-templates/Autumn, LightRain"
             ]
         }
     ]
